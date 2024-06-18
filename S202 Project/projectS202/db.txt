@@ -1,0 +1,16 @@
+CREATE(:Book{title:'IT',release_year:1998,literature:'foreign'});
+CREATE(:Book{title:'Percy Jackson',release_year:1950,literature:'foreign'});
+CREATE(:Book{title:'Diario de um banana',release_year:1987,literature:'national'});
+CREATE(:Book{title:'Duna',release_year:1978,literature:'national'});
+CREATE(:Book{title:'Revolucao dos bichos',release_year:1956,literature:'national'});
+CREATE(:Book{title:'Mouse',release_year:1995,literature:'foreign'});
+
+CREATE(:Author{name:'Autor1',genre:'Horror'});
+CREATE(:Author{name:'Autor2',genre:'Infanto juvenil'});
+CREATE(:Author{name:'Autor3',genre:'Comédia'});
+CREATE(:Author{name:'Autor4',genre:'Suspense'});
+
+MATCH(t:Book{title:'IT'}),(s:Author{name:'Autor1'}) CREATE(t)-[:WRITTEN]->(s);
+MATCH(t:Book{title:'Percy Jackson'}),(s:Author{name:'Autor2'}) CREATE(t)-[:WRITTEN]->(s);
+MATCH(t:Book{title:'Diario de um banana'}),(s:Author{name:'Autor3'}) CREATE(t)-[:WRITTEN]->(s);
+MATCH(t:Book{title:'Mouse'}),(s:Author{name:'Autor4'}) CREATE(t)-[:WRITTEN]->(s);
