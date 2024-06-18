@@ -1,16 +1,14 @@
-CREATE(:Book{title:'IT',release_year:1998,literature:'foreign'});
-CREATE(:Book{title:'Percy Jackson',release_year:1950,literature:'foreign'});
-CREATE(:Book{title:'Diario de um banana',release_year:1987,literature:'national'});
-CREATE(:Book{title:'Duna',release_year:1978,literature:'national'});
-CREATE(:Book{title:'Revolucao dos bichos',release_year:1956,literature:'national'});
-CREATE(:Book{title:'Mouse',release_year:1995,literature:'foreign'});
+CREATE (:Book {title: 'To Kill a Mockingbird', release_year: 1960, literature_type: 'Fiction'})
+CREATE (:Book {title: '1984', release_year: 1949, literature_type: 'Dystopian'})
+CREATE (:Book {title: 'The Great Gatsby', release_year: 1925, literature_type: 'Fiction'})
+CREATE (:Author {name: 'Harper Lee', genre: 'Fiction'})
+CREATE (:Author {name: 'George Orwell', genre: 'Dystopian'})
+CREATE (:Author {name: 'F. Scott Fitzgerald', genre: 'Fiction'})
+MATCH (b:Book {title: 'To Kill a Mockingbird'}), (a:Author {name: 'Harper Lee'})
+CREATE (b)-[:WRITTEN_BY]->(a)
 
-CREATE(:Author{name:'Autor1',genre:'Horror'});
-CREATE(:Author{name:'Autor2',genre:'Infanto juvenil'});
-CREATE(:Author{name:'Autor3',genre:'Comédia'});
-CREATE(:Author{name:'Autor4',genre:'Suspense'});
+MATCH (b:Book {title: '1984'}), (a:Author {name: 'George Orwell'})
+CREATE (b)-[:WRITTEN_BY]->(a)
 
-MATCH(t:Book{title:'IT'}),(s:Author{name:'Autor1'}) CREATE(t)-[:WRITTEN]->(s);
-MATCH(t:Book{title:'Percy Jackson'}),(s:Author{name:'Autor2'}) CREATE(t)-[:WRITTEN]->(s);
-MATCH(t:Book{title:'Diario de um banana'}),(s:Author{name:'Autor3'}) CREATE(t)-[:WRITTEN]->(s);
-MATCH(t:Book{title:'Mouse'}),(s:Author{name:'Autor4'}) CREATE(t)-[:WRITTEN]->(s);
+MATCH (b:Book {title: 'The Great Gatsby'}), (a:Author {name: 'F. Scott Fitzgerald'})
+CREATE (b)-[:WRITTEN_BY]->(a)
